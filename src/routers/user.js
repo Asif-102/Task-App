@@ -14,10 +14,10 @@ router.post("/users", async (req, res) => {
 })
 
 router.post("/users/login", async (req, res) => {
-    try{
-        const user = User.findByCredentials(req.body.email, req.body.password);
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password);
         res.send(user);
-    }catch (e){
+    } catch (e) {
         res.status(400).send();
     }
 })
@@ -85,6 +85,5 @@ router.delete("/users/:id", async (req, res) => {
         res.status(500).send();
     }
 })
-
 
 module.exports = router;

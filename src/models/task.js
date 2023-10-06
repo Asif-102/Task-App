@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const Task = mongoose.model("Task", {
     description: {
@@ -11,9 +10,10 @@ const Task = mongoose.model("Task", {
         type: Boolean,
         default: false
     },
-    Owner: {
+    owner: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: "User"
     }
 })
 
